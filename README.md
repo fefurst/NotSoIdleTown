@@ -1,2 +1,3 @@
 # NotSoIdleTown
-Bot
+
+Usar https://github.com/LonamiWebs/Telethon
