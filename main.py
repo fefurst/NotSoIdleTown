@@ -11,7 +11,7 @@ api_id = 99999
 api_hash = 'abcdef1234567890abcdef1234567890'
 phone = '+5555999998888'
 
-client = TelegramClient('session_name', api_id, api_hash, process_updates=True)
+client = TelegramClient('session_name', api_id, api_hash)
 client.connect()
 
 if not client.is_user_authorized():
