@@ -70,7 +70,7 @@ class Batalhaarena(State):
             self.feedback = True
         
         if self.parseVitoria(bot, message) :
-            self.nivelMaxLimit = self.nivelMaxLimit + 0.5
+            self.nivelMaxLimit = self.nivelMaxLimit + 0.9
             bot.stamina = bot.stamina - 1
             self.limitLvlRnkThreshold = 0.0
             self.feedback = True
@@ -84,7 +84,7 @@ class Batalhaarena(State):
                     self.atacar = False
                     return 'Atacar ⚔'
                 else :
-                    self.limitLvlRnkThreshold = self.limitLvlRnkThreshold + 0.4
+                    self.limitLvlRnkThreshold = self.limitLvlRnkThreshold + 0.8
                     return 'Ataque Normal'
         else :
             bot.destino = constantes.DESTINO_MENU
