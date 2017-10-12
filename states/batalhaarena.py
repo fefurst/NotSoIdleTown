@@ -64,13 +64,13 @@ class Batalhaarena(State):
             self.feedback = True
         
         if self.parseDerrota(bot, message) :
-            self.nivelMaxLimit = self.nivelMaxLimit - 0.5
+            self.nivelMaxLimit = self.nivelMaxLimit - 0.1
             bot.stamina = bot.stamina - 1
-            self.limitLvlRnkThreshold = 0.0
+#            self.limitLvlRnkThreshold = 0.0
             self.feedback = True
         
         if self.parseVitoria(bot, message) :
-            self.nivelMaxLimit = self.nivelMaxLimit + 0.1
+            self.nivelMaxLimit = self.nivelMaxLimit + 0.5
             bot.stamina = bot.stamina - 1
             self.limitLvlRnkThreshold = 0.0
             self.feedback = True

@@ -19,6 +19,8 @@ class Menu(State):
     def __init__(self):
         self.feedback = False
         self.tempoEspera = 0
+        self.timerConstrucoes = 0
+        self.timerEquipamento = 0
 
 
     def parse(self, bot, msg):
@@ -37,15 +39,27 @@ class Menu(State):
     def receive(self, bot, message):        
         okMenu = self.parse(bot, message)
         if okMenu :
-            if int(bot.energy) > random.randrange(50, 100, 10) :
+            self.timerConstrucoes = self.timerConstrucoes + 1
+            self.timerEquipamento = self.timerEquipamento + 1
+            if int(bot.energy) >= 100 : #random.randrange(70, 100, 5) :
                 bot.destino = constantes.DESTINO_BATALHA_CHEFE
                 bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
 
-            elif int(bot.stamina) > random.randrange(2, 5, 1) :
+            elif int(bot.stamina) >= random.randrange(3, 5, 1) :
                 bot.destino = constantes.DESTINO_BATALHA_ARENA
                 bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
 
-        self.feedback = okMenu
+            elif self.timerConstrucoes > 30 :
+                self.timerConstrucoes = 0
+                bot.destino = constantes.DESTINO_CONSTRUCOES
+                bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
+
+            elif self.timerEquipamento > 30 :
+                self.timerEquipamento = 0
+                bot.destino = constantes.DESTINO_EQUIPAMENTO
+                bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
+
+            self.feedback = True
                 
 
     def act(self, bot):
