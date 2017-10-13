@@ -23,7 +23,7 @@ class Navegando(State):
             ## SETAR O ESTADO DE ACORDO COM O DESTINO
             if bot.destino == constantes.DESTINO_MENU :
                 bot._state = constantes.ESTADOS[constantes.ESTADO_MENU]
-            elif bot.destino == constantes.DESTINO_EQUIPAMENTO :
+            elif bot.destino == constantes.DESTINO_EQUIPAMENTO or bot.destino == constantes.DESTINO_FROM_BATALHA_CHEFE_TO_EQUIP :
                 bot._state = constantes.ESTADOS[constantes.ESTADO_EQUIPAMENTO]
             elif bot.destino == constantes.DESTINO_CONSTRUCOES :
                 bot._state = constantes.ESTADOS[constantes.ESTADO_CONSTRUCOES]

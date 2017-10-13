@@ -9,6 +9,7 @@ DESTINO_MENU = ["Menu 📜"]
 DESTINO_EQUIPAMENTO = ["Herói 💂", "Equipamento"]
 DESTINO_CONSTRUCOES = ["Construções 🏢"]
 DESTINO_BATALHA_CHEFE = ["Batalhar ⚔️", "Chefões 👾"]
+DESTINO_FROM_BATALHA_CHEFE_TO_EQUIP = ['Menu 📜', 'Herói 💂', 'Equipamento']
 DESTINO_BATALHA_ARENA = ["Batalhar ⚔️", "Arena 🏛️"]
 
 ESTADO_MENU = 0

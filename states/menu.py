@@ -41,7 +41,7 @@ class Menu(State):
         if okMenu :
             self.timerConstrucoes = self.timerConstrucoes + 1
             self.timerEquipamento = self.timerEquipamento + 1
-            if int(bot.energy) >= 100 : #random.randrange(70, 100, 5) :
+            if int(bot.energy) >= 10 : #random.randrange(70, 100, 5) :
                 bot.destino = constantes.DESTINO_BATALHA_CHEFE
                 bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
 
