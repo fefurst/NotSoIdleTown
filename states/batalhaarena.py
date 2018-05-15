@@ -52,9 +52,9 @@ class Batalhaarena(State):
         return False
 
     def doAttack(self, bot):
-        if self.lastEnemyLevel <= (bot.level + int(self.nivelMaxLimit)) and self.lastEnemyLevel >= (bot.level + int(self.nivelMaxLimit)) - self.janela :
-            if (self.lastEnemyLevel * 100) / self.lastEnemyRank <= (self.limitLvlRnk + self.limitLvlRnkThreshold) :
-                return True
+        #if self.lastEnemyLevel <= (bot.level + int(self.nivelMaxLimit)) and self.lastEnemyLevel >= (bot.level + int(self.nivelMaxLimit)) - self.janela :
+        if (self.lastEnemyLevel * 100) / self.lastEnemyRank <= (self.limitLvlRnk + self.limitLvlRnkThreshold) :
+            return True
         return False
 
 
@@ -72,7 +72,7 @@ class Batalhaarena(State):
         if self.parseVitoria(bot, message) :
             self.nivelMaxLimit = self.nivelMaxLimit + 0.9
             bot.stamina = bot.stamina - 1
-            self.limitLvlRnkThreshold = 0.0
+            #self.limitLvlRnkThreshold = 0.0
             self.feedback = True
         
 

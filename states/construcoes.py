@@ -16,7 +16,8 @@ class Construcoes(State):
     def __init__(self):
         self.feedback = True
         self.idxUp = 0
-        self.upOrder = ['Arsenal 🛡', 'Serraria 🌳', 'Serraria 🌳', 'Serraria 🌳', 'Serraria 🌳', 'Ferreiro 🗡', 'Mina de Ouro 💰']
+        #self.upOrder = ['Arsenal 🛡', 'Serraria 🌳', 'Serraria 🌳', 'Serraria 🌳', 'Serraria 🌳', 'Ferreiro 🗡', 'Mina de Ouro 💰']
+        self.upOrder = ['Serraria 🌳']
         self.insuficiente = False
 
     def receive(self, bot, message):

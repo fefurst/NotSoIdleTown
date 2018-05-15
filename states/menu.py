@@ -17,7 +17,7 @@ class Menu(State):
         return Menu.__instance
     
     def __init__(self):
-        self.feedback = False
+        self.feedback = True
         self.tempoEspera = 0
         self.timerConstrucoes = 0
         self.timerEquipamento = 0
@@ -59,12 +59,13 @@ class Menu(State):
                 bot.destino = constantes.DESTINO_EQUIPAMENTO
                 bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
 
+            self.tempoEspera = random.randrange(188, 278, 2)
             self.feedback = True
                 
 
     def act(self, bot):
         if self.tempoEspera <= 0 :
-            self.tempoEspera = random.randrange(45, 95, 1)
+            self.tempoEspera = random.randrange(188, 278, 2)
             if self.feedback :
                 #if random.randrange(1, 7, 1) % 3 == 0: # simula se pesquisa um novo oponente ou aguarda mais um pouco
                 """ De tempos em tempos atualizar a tela para atualizar valores do bot """
@@ -75,7 +76,7 @@ class Menu(State):
                 print ("Ops sem feedback ...")
             
         else :
-            self.tempoEspera = self.tempoEspera - 1
+            self.tempoEspera = self.tempoEspera - 2
             if self.tempoEspera % 10 == 0:
                 print ("Esperando ... " + str(self.tempoEspera))
 

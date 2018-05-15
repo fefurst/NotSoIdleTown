@@ -45,12 +45,13 @@ class Batalhachefe(State):
     def act(self, bot):
         print("Act Batalhachefe ...")
     
-    
-        if bot.energy > 0 :
-            return "Atacar Max"
-        else :
-            bot.destino = constantes.DESTINO_MENU
-            bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
+        if self.feedback :
+            if bot.energy > 0 :
+                self.feedback = False
+                return "Atacar Max"
+            else :
+                bot.destino = constantes.DESTINO_MENU
+                bot._state = constantes.ESTADOS[constantes.ESTADO_NAVEGANDO]
 
         return None
         

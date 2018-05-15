@@ -1,4 +1,4 @@
-from telethon import TelegramClient
+from telethon import TelegramClient, events
 from telethon.tl.types import UpdateShortChatMessage, UpdateShortMessage, Updates, UpdateNewMessage
 import time
 import random
@@ -14,7 +14,7 @@ api_id = 99999
 api_hash = 'abcdef1234567890abcdef1234567890'
 phone = '+5555999998888'
 
-client = TelegramClient('session_name3', api_id, api_hash)
+client = TelegramClient('session_name3', api_id, api_hash, update_workers=1)
 client.connect()
 
 if not client.is_user_authorized():
@@ -48,36 +48,21 @@ def checkUser(id) :
         return True
     return False
 
-def update_handler(update_object):
+@client.on(events.NewMessage(incoming=True))
+def update_handler(event):
     global doAttack
     global doSearchOpponent
-    if isinstance(update_object, UpdateShortMessage) :
-        if checkUser(update_object.user_id) :
-            #print(update_object)
-            if update_object.out:
-                sprint('1 You sent {} to user #{}'.format(update_object.message, update_object.user_id))
-            else:
-                sprint('2 [User #{} sent {}]'.format(update_object.user_id, update_object.message))
-                context.receive(update_object.message)
-    elif isinstance(update_object, UpdateShortChatMessage):
-        if update_object.out:
-            sprint('3 You sent {} to chat #{}'.format(update_object.message, update_object.chat_id))
-        else:
-            sprint('4 [Chat #{}, user #{} sent {}]'.format(update_object.chat_id, update_object.from_id, update_object.message))
-    elif isinstance(update_object, Updates):
-        if len(update_object.updates) > 0:
-            if isinstance(update_object.updates[0], UpdateNewMessage):
-                if checkUser(update_object.updates[0].message.from_id) :
-                    sprint('5 User #{} sent #{}'.format(update_object.updates[0].message.from_id, update_object.updates[0].message.message))
-                    #print(update_object)
-                    msg=update_object.updates[0].message.message
-                    context.receive(msg)
+
+    if checkUser(event.message.from_id) :
+        sprint('<<<<<<<\nUser #{}\n#{}\n<<<<<<<\n'.format(event.message.from_id, event.message.message))
+        msg=event.message.message
+        context.receive(msg)
 
 
-client.add_update_handler(update_handler)
+client.send_message('@IdleTownBot', "Menu 📜")
 
 while True:
-    time.sleep( 1 )
+    time.sleep( 2 )
     resp = context.act()
     if resp != None :
         print ("Enviando ... "+ resp)
